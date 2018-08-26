@@ -12,13 +12,14 @@ namespace assignment1
         private static UserInterface _instance;
         private String _menuString = "";
         private String _menuChoice = "";
+        private String _spaces = "\t\t\t\t\t\t";
         private bool _quitState = false;
 
         // properties
         public String MenuOutput { get; }
         public String UserChoice { get; set; }
         public String ExitMessage { get; set; } = "\n\n\t\t\t\t\t\tExiting program.";
-        public String Spaces { get; set; } = "\t\t\t\t\t\t";
+        public String Spaces { get; set; }
 
         // constructor
         private UserInterface()
@@ -26,8 +27,8 @@ namespace assignment1
             DrawMenu();
             MenuOutput = _menuString;
             UserChoice = _menuChoice;
+            Spaces = _spaces;
             ExitMessage = ExitMessage;
-            Spaces = Spaces;
         }
 
         // methods (singleton)
@@ -56,24 +57,22 @@ namespace assignment1
 
         public String GetChoice(String choice)
         {
+            choice = choice.ToUpper();
             _quitState = false;
             switch (choice)
             {
-                case "1":
-                    _menuChoice = "\n\n\t\t\t\t\t\tYou chose option 1.";
+                case "L":
+                    _menuChoice = "\n\n\t\t\t\t\t\tLoading WineList.";
                     break;
-                case "2":
-                    _menuChoice = "\n\n\t\t\t\t\t\tYou chose option 2.";
+                case "P":
+                    _menuChoice = "\n\n\t\t\t\t\t\tThe WineList contains the following wines.";
                     break;
-                case "3":
-                    _menuChoice = "\n\n\t\t\t\t\t\tYou chose option 3.";
+                case "S":
+                    _menuChoice = "\n\n\t\t\t\t\t\tSearch WineList.";
                     break;
-                case "4":
-                    _menuChoice = "\n\n\t\t\t\t\t\tYou chose option 4.";
-                    break;
-                case "q":
-                    _quitState = true;
-                    break;
+                case "A":
+                    _menuChoice = "\n\n\t\t\t\t\t\tAdd a wine to the WintList.";
+                    break;                
                 case "Q":
                     _quitState = true;
                     break;
