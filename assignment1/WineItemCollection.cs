@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace assignment1
 {
-    class Program
+    class WineItemCollection
     {
-        static void Main(string[] args)
-        {
-
-        }
     }
 }
