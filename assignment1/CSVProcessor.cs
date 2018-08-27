@@ -11,12 +11,17 @@ namespace assignment1
     {
         private static CSVProcessor _instance;
         private static string _filename = "WineList.csv";
-        private string _path = Path.Combine(Environment.CurrentDirectory, @"datafiles\", _filename);
+        private static string _path = Path.Combine(Environment.CurrentDirectory, @"datafiles\", _filename);
 
         public static CSVProcessor GetInstance()
         {
-            if (_instance == null) _instance = new CSVProcessor();
+            if (_instance == null) _instance = new CSVProcessor(_path);
             return _instance;
+        }
+
+        private CSVProcessor(string path)
+        {
+            
         }
     }
 }
