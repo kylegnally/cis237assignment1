@@ -23,9 +23,6 @@ namespace assignment1
             return ItemAsString;
         }
 
-        //public string Id { get; set; }
-        //public string Desc { get; set; }
-
         public string Id { get; set; }
         public string Desc { get; set; }
         public string Pack { get; set; }
