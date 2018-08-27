@@ -8,6 +8,11 @@ namespace assignment1
 {
     class CSVProcessor
     {
+        private static CSVProcessor _getInstance;
 
+        private CSVProcessor()
+        {
+
+        }
     }
 }

@@ -33,6 +33,11 @@ namespace assignment1
                 System.Threading.Thread.Sleep(1000);
                 Environment.Exit(0);
             }
+
+            if (aMenu.LoadList)
+            {
+
+            }
             ShowOutput();
         }
 

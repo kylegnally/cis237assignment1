@@ -8,20 +8,28 @@ namespace assignment1
 {
     class WineItem
     {
-        private string _id;
-        private string _description;
-        private string _pack;
+        public WineItem() { }
 
         public WineItem(string Id, string Desc, string Pack)
         {
-            _id = Id;
-            _description = Desc;
-            _pack = Pack;
+            this.Id = Id;
+            this.Desc = Desc;
+            this.Pack = Pack;
         }
+
+        public override string ToString()
+        {
+            ItemAsString = Id + ", " + Desc + ", " + Pack;
+            return ItemAsString;
+        }
+
+        //public string Id { get; set; }
+        //public string Desc { get; set; }
 
         public string Id { get; set; }
         public string Desc { get; set; }
         public string Pack { get; set; }
+        public string ItemAsString { get; set; }
 
     }
 }
