@@ -25,20 +25,20 @@ namespace assignment1
         static void GetInput()
         {
             Console.Write(aMenu.Spaces);
-            String userSelection = Console.ReadLine();
-            if (userSelection.ToUpper() == "Q")
+            string userSelection = Console.ReadLine();            
+            aMenu.GetChoice(userSelection);
+            if (aMenu.QuitState)
             {
                 Console.WriteLine(aMenu.ExitMessage);
                 System.Threading.Thread.Sleep(1000);
                 Environment.Exit(0);
             }
-            aMenu.GetChoice(userSelection);
             ShowOutput();
         }
 
         static void ShowOutput()
         {
-            Console.Write(aMenu.UserChoice);
+            Console.Write(aMenu.SelectionOutput);
             System.Threading.Thread.Sleep(1000);
             Console.Clear();
             ShowMenu();

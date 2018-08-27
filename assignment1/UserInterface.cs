@@ -10,79 +10,88 @@ namespace assignment1
     {
         // fields
         private static UserInterface _instance;
-        private String _menuString = "";
-        private String _menuChoice = "";
-        private String _spaces = "\t\t\t\t\t\t";
-        private bool _quitState = false;
 
-        // properties
-        public String MenuOutput { get; }
-        public String UserChoice { get; set; }
-        public String ExitMessage { get; set; } = "\n\n\t\t\t\t\t\tExiting program.";
-        public String Spaces { get; set; }
-
-        // constructor
-        private UserInterface()
-        {
-            DrawMenu();
-            MenuOutput = _menuString;
-            UserChoice = _menuChoice;
-            Spaces = _spaces;
-            ExitMessage = ExitMessage;
-        }
-
-        // methods (singleton)
-        public static UserInterface GetInstance()
-        {
-            if (_instance == null)
-            {
-                _instance = new UserInterface();
-            }
-
-            return _instance;
-        }
-
-        public String DrawMenu()
-        {
-            _menuString = "\n\n\n\n\n\t\t\t\t\t\tWelcome to WineShop!\n\n" +
+        private string _menuOutput = "\n\n\n\n\n\t\t\t\t\t\tWelcome to WineShop!\n\n" +
                 "\t\t\t\t\t\tPlease select an option: \n\n\n\n" +
                 "\t\t\t\t\t\t1) (L) Load the WineList\n" +
                 "\t\t\t\t\t\t2) (P) Print the WineList\n" +
                 "\t\t\t\t\t\t3) (S) Search the WineList\n" +
                 "\t\t\t\t\t\t4) (A) Add a wine to the WineList\n\n" +
                 "\t\t\t\t\t\tPress Q to quit\n\n";
+        private string _selectionOutput = "";
+        private string _spaces = "\t\t\t\t\t\t";
+        private string _exitMessage = "\n\n\t\t\t\t\t\tExiting program.";
 
-            return _menuString;
+        private bool _loadList = false;
+        private bool _quitState = false;
+
+        // properties
+        public string MenuOutput { get; }
+        public string SelectionOutput { get; set; }
+        public string ExitMessage { get; set; }
+        public string Spaces { get; }
+
+        public bool LoadList { get; set; }
+        public bool QuitState { get; set; }
+
+        // constructor
+        private UserInterface()
+        {
+            DrawMenu();
+            MenuOutput = _menuOutput;            
+            Spaces = _spaces;            
+        }
+
+        // methods
+        public static UserInterface GetInstance()                   
+        {
+            if (_instance == null) _instance = new UserInterface();            
+            return _instance;
+        }
+
+        public String DrawMenu()
+        {
+            _quitState = false;            
+            return _menuOutput;
         }
 
         public String GetChoice(String choice)
         {
             choice = choice.ToUpper();
-            _quitState = false;
             switch (choice)
             {
                 case "L":
-                    _menuChoice = "\n\n\t\t\t\t\t\tLoading WineList.";
+                    if (!_loadList)
+                    {
+                        _selectionOutput = "\n\n\t\t\t\t\t\tLoading WineList.";
+                        _loadList = true;
+                    }
+                    else _selectionOutput = "\n\n\t\t\t\t\t\tWineList is already loaded.\n" +
+                            "\t\t\t\t\t\tPlease select another option.";
                     break;
                 case "P":
-                    _menuChoice = "\n\n\t\t\t\t\t\tThe WineList contains the following wines.";
+                    _selectionOutput = "\n\n\t\t\t\t\t\tThe WineList contains the following wines.";
                     break;
                 case "S":
-                    _menuChoice = "\n\n\t\t\t\t\t\tSearch WineList.";
+                    _selectionOutput = "\n\n\t\t\t\t\t\tSearch WineList.";
                     break;
                 case "A":
-                    _menuChoice = "\n\n\t\t\t\t\t\tAdd a wine to the WintList.";
+                    _selectionOutput = "\n\n\t\t\t\t\t\tAdd a wine to the WintList.";
                     break;                
                 case "Q":
+                    _selectionOutput = _exitMessage;
                     _quitState = true;
                     break;
                 default:
-                    _menuChoice = "\n\n\t\t\t\t\t\tThat is not a valid option.\n" +
+                    _selectionOutput = "\n\n\t\t\t\t\t\tThat is not a valid option.\n" +
                         "\t\t\t\t\t\tPlease select an option from the list above.";
                     break;
             }
-            UserChoice = _menuChoice;
-            return _menuChoice;
+            ExitMessage = _exitMessage;
+            SelectionOutput = _selectionOutput;
+            LoadList = _loadList;
+            QuitState = _quitState;
+            return _selectionOutput;
         }
     }
 }
