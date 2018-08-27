@@ -27,9 +27,10 @@ namespace assignment1
 
         // properties
         public string MenuOutput { get; }
+        public string Spaces { get; }
         public string SelectionOutput { get; set; }
         public string ExitMessage { get; set; }
-        public string Spaces { get; }
+
 
         public bool LoadList { get; set; }
         public bool QuitState { get; set; }
@@ -38,7 +39,8 @@ namespace assignment1
         private UserInterface()
         {
             DrawMenu();
-            MenuOutput = _menuOutput;            
+            MenuOutput = _menuOutput;
+            ExitMessage = _exitMessage;
             Spaces = _spaces;            
         }
 
@@ -87,7 +89,6 @@ namespace assignment1
                         "\t\t\t\t\t\tPlease select an option from the list above.";
                     break;
             }
-            ExitMessage = _exitMessage;
             SelectionOutput = _selectionOutput;
             LoadList = _loadList;
             QuitState = _quitState;
