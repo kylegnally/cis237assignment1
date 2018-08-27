@@ -30,8 +30,6 @@ namespace assignment1
         public string Spaces { get; }
         public string SelectionOutput { get; set; }
         public string ExitMessage { get; set; }
-
-
         public bool LoadList { get; set; }
         public bool QuitState { get; set; }
 
