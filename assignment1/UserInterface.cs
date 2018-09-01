@@ -13,16 +13,20 @@ namespace assignment1
 
         private string _menuOutput = "\n\n\n\n\n\t\t\t\t\t\tWelcome to WineShop!\n\n" +
                 "\t\t\t\t\t\tPlease select an option: \n\n\n\n" +
-                "\t\t\t\t\t\t1) (L) Load the WineList\n" +
-                "\t\t\t\t\t\t2) (P) Print the WineList\n" +
-                "\t\t\t\t\t\t3) (S) Search the WineList\n" +
-                "\t\t\t\t\t\t4) (A) Add a wine to the WineList\n\n" +
-                "\t\t\t\t\t\tPress Q to quit\n\n";
+                "\t\t\t\t\t\t(L) Load the WineList\n" +
+                "\t\t\t\t\t\t(P) Print the WineList\n" +
+                "\t\t\t\t\t\t(S) Search the WineList\n" +
+                "\t\t\t\t\t\t(A) Add a wine to the WineList\n" +
+                "\t\t\t\t\t\t(Q) Quit\n\n";
         private string _selectionOutput = "";
         private string _spaces = "\t\t\t\t\t\t";
         private string _exitMessage = "\n\n\t\t\t\t\t\tExiting program.";
 
+        // menu flags
         private bool _loadList = false;
+        private bool _printList = false;
+        private bool _searchList = false;
+        private bool _addList = false;
         private bool _quitState = false;
 
         // properties
@@ -31,6 +35,9 @@ namespace assignment1
         public string SelectionOutput { get; set; }
         public string ExitMessage { get; set; }
         public bool LoadList { get; set; }
+        public bool PrintList { get; set; }
+        public bool SearchList { get; set; }
+        public bool AddList { get; set; }
         public bool QuitState { get; set; }
 
         // constructor
@@ -51,7 +58,10 @@ namespace assignment1
 
         public String DrawMenu()
         {
-            _quitState = false;            
+            _quitState = false;
+            _loadList = false;
+            _searchList = false;
+            _addList = false;
             return _menuOutput;
         }
 
@@ -70,13 +80,23 @@ namespace assignment1
                             "\t\t\t\t\t\tPlease select another option.";
                     break;
                 case "P":
-                    _selectionOutput = "\n\n\t\t\t\t\t\tThe WineList contains the following wines.";
+                    if (!_loadList)
+                    {
+                        _selectionOutput = "\n\n\t\t\t\t\t\tThe WineList isn't loaded yet.\n\nPlease select (L) to load the WineList.";
+                    }
+                    else
+                    {
+                        _selectionOutput = "\n\n\t\t\t\t\t\tThe WineList contains the following wines.";
+                        _printList = true;
+                    }
                     break;
                 case "S":
                     _selectionOutput = "\n\n\t\t\t\t\t\tSearch WineList.";
+                    _searchList = true;
                     break;
                 case "A":
                     _selectionOutput = "\n\n\t\t\t\t\t\tAdd a wine to the WintList.";
+                    _addList = true;
                     break;                
                 case "Q":
                     _selectionOutput = _exitMessage;
@@ -89,6 +109,9 @@ namespace assignment1
             }
             SelectionOutput = _selectionOutput;
             LoadList = _loadList;
+            PrintList = _printList;
+            SearchList = _searchList;
+            AddList = _addList;
             QuitState = _quitState;
             return _selectionOutput;
         }

@@ -9,6 +9,7 @@ namespace assignment1
     class Program
     {
         static UserInterface aMenu = UserInterface.GetInstance();
+        static CSVProcessor getDrunk;
 
         static void Main(string[] args)
         {
@@ -36,9 +37,14 @@ namespace assignment1
 
             if (aMenu.LoadList)
             {
+                getDrunk = CSVProcessor.GetInstance();
+                ShowOutput();
+            }
+
+            if (aMenu.PrintList)
+            {
 
             }
-            ShowOutput();
         }
 
         static void ShowOutput()
