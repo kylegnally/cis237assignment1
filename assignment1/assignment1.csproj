@@ -50,6 +50,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="bin\Debug\assignment1.exe.config" />
+    <None Include="WineList.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\assignment1.exe" />
+    <Content Include="bin\Debug\assignment1.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -11,12 +11,12 @@ namespace assignment1
     class CSVProcessor
     {
         private static CSVProcessor _instance;
+        private WineItemCollection wineCellar;
+
         private static string _filename = "WineList.csv";
-        //private static string _path = Path.Combine(Environment.CurrentDirectory, @"datafiles\", _filename);
-        //private static string _path = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), _filename);
         private static string _path = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, _filename);
 
-        private string[,] loadedWinelist;
+        private string[] loadedWinelist;
         
         public static CSVProcessor GetInstance()
         {
@@ -29,22 +29,10 @@ namespace assignment1
             LoadCSV(_path);
         }
 
-        private string[,] LoadCSV(string path)
+        private string[] LoadCSV(string path)
         {
             string csvFile = System.IO.File.ReadAllText(path);
-            string[] lines = csvFile.Split(new char[] { '\r' }, StringSplitOptions.RemoveEmptyEntries);
-            int rows = lines.Length;
-            int cols = lines[0].Split(',').Length;
-            string[,] values = new string[rows, cols];
-
-            for (int r = 0; r < rows; r++)
-            {
-                string[] lineRow = lines[r].Split(',');
-                for (int c = 0; c < cols; c++)              // the counter also serves as a bad pun
-                {
-                    values[r, c] = lineRow[c];
-                }
-            }
+            loadedWinelist = csvFile.Split(new char[] { '\r' }, StringSplitOptions.RemoveEmptyEntries);
             return loadedWinelist;
         }
 

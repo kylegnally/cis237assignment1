@@ -10,9 +10,14 @@ namespace assignment1
     {
         private WineItem[] _wineCellar;
         
-        private WineItemCollection()
+        public WineItemCollection()
         {
 
+        }
+
+        public void Add(string id, string desc, string pack)
+        {
+            WineItem wineCase = new WineItem(id, desc, pack);            
         }
     }
 }

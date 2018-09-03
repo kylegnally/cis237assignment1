@@ -6,9 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "assignment1", "assignment1\assignment1.csproj", "{70225A93-55F0-46EB-B794-C349E0C16A68}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3566A24A-5591-42A9-B45A-B2E8383DBE82}"
-	ProjectSection(SolutionItems) = preProject
-		datafiles\WineList.csv = datafiles\WineList.csv
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
