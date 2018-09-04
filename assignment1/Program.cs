@@ -10,7 +10,7 @@ namespace assignment1
     {
         static UserInterface aMenu = UserInterface.GetInstance();
         static CSVProcessor getDrunk;
-
+        
         static void Main(string[] args)
         {
             ShowMenu();
@@ -43,7 +43,8 @@ namespace assignment1
 
             if (aMenu.PrintList)
             {
-
+                WineItemCollection wineCellar = new WineItemCollection();
+                wineCellar.GetPrintString();
             }
         }
 

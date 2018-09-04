@@ -29,11 +29,11 @@ namespace assignment1
             LoadCSV(_path);
         }
 
-        private string[] LoadCSV(string path)
+        private void LoadCSV(string path)
         {
             string csvFile = System.IO.File.ReadAllText(path);
             loadedWinelist = csvFile.Split(new char[] { '\r' }, StringSplitOptions.RemoveEmptyEntries);
-            return loadedWinelist;
+            WineItemCollection wineCellar = new WineItemCollection(loadedWinelist);
         }
 
         //private string[,] LoadCSV(string path)
