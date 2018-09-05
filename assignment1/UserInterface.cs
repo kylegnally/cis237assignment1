@@ -93,7 +93,8 @@ namespace assignment1
                     }
                     break;
                 case "S":
-                    _selectionOutput = "\n\n\t\t\t\t\t\tSearch WineList.";
+                    _selectionOutput = "\n\n\t\t\t\t\t\tEnter desired WineID: ";
+                    _printList = false;
                     _searchList = true;
                     break;
                 case "A":

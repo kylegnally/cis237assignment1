@@ -8,7 +8,7 @@ namespace assignment1
 {
     class WineItemCollection
     {
-        private WineItem[] _wineCellar;
+        private static WineItem[] _wineCellar;
         private int _numRows;
         private int _counter;
         private int _id;
@@ -38,24 +38,30 @@ namespace assignment1
             _counter++;
         }
 
-        public string Search(int wineId)
+        public string Search(string wineId)
         {
             for (int i = 0; i < _wineCellar.Length; i++)
             {
-                if (_wineCellar[i].Id == wineId.ToString())
+                if (_wineCellar[i].Id == wineId)
                 {
                     _itemAsString = "Item found: " +
                         _wineCellar[i].Id.ToString() + ", " +
                         _wineCellar[i].Desc.ToString() + ", " +
                         _wineCellar[i].Pack.ToString();
                 }
-                else _itemAsString = "Item not found.";
+                //else _itemAsString = "Item not found.";
             }
+            if (_itemAsString == null) _itemAsString = "Item not found.";
             return _itemAsString;
         }
 
-        public void GetPrintString()
+        public string OneWine
         {
+            get { return _itemAsString; }
+        }
+
+        public void GetPrintString()
+        {            
             for (int i = 0; i < _wineCellar.Length; i++)
             {
                 Console.WriteLine(_wineCellar[i].Id.ToString() + ", " +

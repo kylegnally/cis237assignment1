@@ -10,6 +10,7 @@ namespace assignment1
     {
         static UserInterface aMenu = UserInterface.GetInstance();
         static CSVProcessor getDrunk;
+        public static WineItemCollection wineCellar;
         
         static void Main(string[] args)
         {
@@ -44,10 +45,20 @@ namespace assignment1
 
             else if (aMenu.PrintList)
             {
-                WineItemCollection wineCellar = new WineItemCollection();
+                wineCellar = new WineItemCollection();
                 wineCellar.GetPrintString();
                 Pause();
             }
+
+            else if (aMenu.SearchList)
+            {
+                Console.Write(aMenu.SelectionOutput);
+                string wineId = Console.ReadLine();
+                wineCellar.Search(wineId);
+                Console.Write(wineCellar.OneWine);
+                Pause();
+            }
+
             else
             {
                 ShowOutput();                
