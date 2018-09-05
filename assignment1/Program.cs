@@ -35,22 +35,33 @@ namespace assignment1
                 Environment.Exit(0);
             }
 
-            if (aMenu.LoadList)
+            else if (aMenu.LoadList)
             {
                 getDrunk = CSVProcessor.GetInstance();
                 ShowOutput();
+                Pause();
             }
 
-            if (aMenu.PrintList)
+            else if (aMenu.PrintList)
             {
                 WineItemCollection wineCellar = new WineItemCollection();
                 wineCellar.GetPrintString();
+                Pause();
+            }
+            else
+            {
+                ShowOutput();                
             }
         }
 
         static void ShowOutput()
         {
             Console.Write(aMenu.SelectionOutput);
+            Pause();            
+        }
+
+        static void Pause()
+        {
             System.Threading.Thread.Sleep(1000);
             Console.Clear();
             ShowMenu();

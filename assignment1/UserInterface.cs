@@ -58,10 +58,10 @@ namespace assignment1
 
         public String DrawMenu()
         {
-            _quitState = false;
-            _loadList = false;
-            _searchList = false;
-            _addList = false;
+            //_quitState = false;
+            //_loadList = false;
+            //_searchList = false;
+            //_addList = false;
             return _menuOutput;
         }
 
@@ -80,13 +80,15 @@ namespace assignment1
                             "\t\t\t\t\t\tPlease select another option.";
                     break;
                 case "P":
-                    if (!_loadList)
+                    if (!_loadList && !_printList)
                     {
-                        _selectionOutput = "\n\n\t\t\t\t\t\tThe WineList isn't loaded yet.\n\nPlease select (L) to load the WineList.";
+                        _selectionOutput = "\n\n\t\t\t\t\t\tThe WineList isn't loaded yet." +
+                            "\n\n\t\t\t\t\t\tPlease select (L) to load the WineList.";
                     }
                     else
                     {
                         _selectionOutput = "\n\n\t\t\t\t\t\tThe WineList contains the following wines.";
+                        _loadList = false;
                         _printList = true;
                     }
                     break;
